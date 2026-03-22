@@ -1,7 +1,9 @@
 import datetime
+
 cadastros = {'nome':[], 'ano_nasc':[], 'sexo':[]}
 idades = []
 sexo_fem = []
+sexo_masc = []
 ano_atual = int(datetime.date.today().year)
 qtd_cadastros = 0
 
@@ -20,11 +22,14 @@ while True:
             idades.append(ano_atual - int(ano_nasc))
             if sexo == 'F' and ((ano_atual - int(ano_nasc)) < 30):
                 sexo_fem.append(1)
+            elif sexo == 'M' and ((ano_atual - int(ano_nasc)) > (sum(idades) / len(idades))):
+                sexo_masc.append(1)
             qtd_cadastros += 1
     else:
         print(f'Quantidade de cadastros: {qtd_cadastros}')
         print(cadastros)
         print(f'Média de idades: {(sum(idades) / len(idades))}')
         print(f'A lista possui {sexo_fem.count(1)} mulheres cadastradas com menos de 30 anos')
+        print(f'A lista possui {sexo_masc.count(1)} homens cadastrados acima da média de idade')
         print('Programa encerrado...')
         break
