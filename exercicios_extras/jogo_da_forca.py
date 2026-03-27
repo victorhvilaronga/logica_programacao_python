@@ -41,6 +41,19 @@ def criarArquivo(nomeArquivo):
         print(f'Arquivo {nomeArquivo} criado com sucesso! \n')
 
 def ler_arquivo(nome_arquivo):
+    """
+    Esta função cria le o arquivo de palavras e cria uma lista com elas tratadas
+
+    Args:
+        nomeArquivo str: Recebe o nome do arquivo
+    
+    Returns:
+        Cria uma lista com palavras tratadas
+
+    Raises:
+        Printa mensagem de erro ao ler o arquivo.
+    """
+
     palavras = []
     try:
         with open(nome_arquivo, 'rt') as f:
@@ -53,6 +66,21 @@ def ler_arquivo(nome_arquivo):
     return palavras
 
 def jogar(palavra, dica):
+
+    """
+    Esta função é a lógica por trás do jogo da forca
+
+    Args:
+        palavra str: Recebe palavra escolhida aleatoriamente da lista palavras
+        dica str: Recebe dica associada a palavra aleatoria de lista palavras
+    
+    Returns:
+        Prints das letras tentadas, acertadas e resultado final.
+
+    Raises:
+        Print de letra já tentada
+        Print de letra nao existente
+    """
 
     letras_descobertas = ['_'for _ in palavra]
     letras_tentadas = []
@@ -79,6 +107,19 @@ def jogar(palavra, dica):
     print('\n Parabéns! Você acertou: ', palavra)
 
 def iniciar_jogo(lista):
+    """
+    Esta função puxa a lista de palavras e escolhe uma palavra aleatoria e uma dica associada.
+    Chama a funcao jogar levando as variaveis
+
+    Args:
+        lista str: Recebe a lista de palavras tratada do arquivo
+    
+    Returns:
+        Inicia o jogo com a palavra e dica aleatoria
+
+    Raises:
+        
+    """
     palavra, dica = random.choice(lista)
     jogar(palavra, dica)
 
